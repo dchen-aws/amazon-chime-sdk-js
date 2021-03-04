@@ -74,6 +74,12 @@
 					</li>
 				</ul>
 			</section>
+			<section class="tsd-panel">
+				<h3>Implements</h3>
+				<ul class="tsd-hierarchy">
+					<li><a href="../interfaces/disposable.html" class="tsd-signature-type">Disposable</a></li>
+				</ul>
+			</section>
 			<section class="tsd-panel-group tsd-index-group">
 				<h2>Index</h2>
 				<section class="tsd-panel tsd-index-panel">
@@ -89,6 +95,7 @@
 							<ul class="tsd-index-list">
 								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="meetingsessionpostlogger.html#batchsize" class="tsd-kind-icon">batch<wbr>Size</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="meetingsessionpostlogger.html#configuration" class="tsd-kind-icon">configuration</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="meetingsessionpostlogger.html#eventlistener" class="tsd-kind-icon">event<wbr>Listener</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="meetingsessionpostlogger.html#intervalms" class="tsd-kind-icon">interval<wbr>Ms</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="meetingsessionpostlogger.html#intervalscheduler" class="tsd-kind-icon">interval<wbr>Scheduler</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="meetingsessionpostlogger.html#level" class="tsd-kind-icon">level</a></li>
@@ -102,13 +109,16 @@
 						<section class="tsd-index-section ">
 							<h3>Methods</h3>
 							<ul class="tsd-index-list">
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="meetingsessionpostlogger.html#addeventlistener" class="tsd-kind-icon">add<wbr>Event<wbr>Listener</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="meetingsessionpostlogger.html#debug" class="tsd-kind-icon">debug</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="meetingsessionpostlogger.html#dispose" class="tsd-kind-icon">dispose</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="meetingsessionpostlogger.html#error" class="tsd-kind-icon">error</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="meetingsessionpostlogger.html#getlogcapturesize" class="tsd-kind-icon">get<wbr>Log<wbr>Capture<wbr>Size</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="meetingsessionpostlogger.html#getloglevel" class="tsd-kind-icon">get<wbr>Log<wbr>Level</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="meetingsessionpostlogger.html#info" class="tsd-kind-icon">info</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private"><a href="meetingsessionpostlogger.html#log" class="tsd-kind-icon">log</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private"><a href="meetingsessionpostlogger.html#makerequestbody" class="tsd-kind-icon">make<wbr>Request<wbr>Body</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="meetingsessionpostlogger.html#removeeventlistener" class="tsd-kind-icon">remove<wbr>Event<wbr>Listener</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="meetingsessionpostlogger.html#setloglevel" class="tsd-kind-icon">set<wbr>Log<wbr>Level</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="meetingsessionpostlogger.html#startlogpublishscheduler" class="tsd-kind-icon">start<wbr>Log<wbr>Publish<wbr>Scheduler</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="meetingsessionpostlogger.html#stop" class="tsd-kind-icon">stop</a></li>
@@ -130,7 +140,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/aws/amazon-chime-sdk-js/blob/master/src/logger/MeetingSessionPOSTLogger.ts#L13">src/logger/MeetingSessionPOSTLogger.ts:13</a></li>
+									<li>Defined in <a href="https://github.com/aws/amazon-chime-sdk-js/blob/master/src/logger/MeetingSessionPOSTLogger.ts#L15">src/logger/MeetingSessionPOSTLogger.ts:15</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -167,7 +177,7 @@
 					<div class="tsd-signature tsd-kind-icon">batch<wbr>Size<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/aws/amazon-chime-sdk-js/blob/master/src/logger/MeetingSessionPOSTLogger.ts#L18">src/logger/MeetingSessionPOSTLogger.ts:18</a></li>
+							<li>Defined in <a href="https://github.com/aws/amazon-chime-sdk-js/blob/master/src/logger/MeetingSessionPOSTLogger.ts#L20">src/logger/MeetingSessionPOSTLogger.ts:20</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -177,7 +187,17 @@
 					<div class="tsd-signature tsd-kind-icon">configuration<span class="tsd-signature-symbol">:</span> <a href="meetingsessionconfiguration.html" class="tsd-signature-type">MeetingSessionConfiguration</a></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/aws/amazon-chime-sdk-js/blob/master/src/logger/MeetingSessionPOSTLogger.ts#L17">src/logger/MeetingSessionPOSTLogger.ts:17</a></li>
+							<li>Defined in <a href="https://github.com/aws/amazon-chime-sdk-js/blob/master/src/logger/MeetingSessionPOSTLogger.ts#L19">src/logger/MeetingSessionPOSTLogger.ts:19</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-private">
+					<a name="eventlistener" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagPrivate">Private</span> event<wbr>Listener</h3>
+					<div class="tsd-signature tsd-kind-icon">event<wbr>Listener<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">)</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/aws/amazon-chime-sdk-js/blob/master/src/logger/MeetingSessionPOSTLogger.ts#L15">src/logger/MeetingSessionPOSTLogger.ts:15</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -187,7 +207,7 @@
 					<div class="tsd-signature tsd-kind-icon">interval<wbr>Ms<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/aws/amazon-chime-sdk-js/blob/master/src/logger/MeetingSessionPOSTLogger.ts#L19">src/logger/MeetingSessionPOSTLogger.ts:19</a></li>
+							<li>Defined in <a href="https://github.com/aws/amazon-chime-sdk-js/blob/master/src/logger/MeetingSessionPOSTLogger.ts#L21">src/logger/MeetingSessionPOSTLogger.ts:21</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -197,7 +217,7 @@
 					<div class="tsd-signature tsd-kind-icon">interval<wbr>Scheduler<span class="tsd-signature-symbol">:</span> <a href="intervalscheduler.html" class="tsd-signature-type">IntervalScheduler</a></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/aws/amazon-chime-sdk-js/blob/master/src/logger/MeetingSessionPOSTLogger.ts#L13">src/logger/MeetingSessionPOSTLogger.ts:13</a></li>
+							<li>Defined in <a href="https://github.com/aws/amazon-chime-sdk-js/blob/master/src/logger/MeetingSessionPOSTLogger.ts#L14">src/logger/MeetingSessionPOSTLogger.ts:14</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -207,7 +227,7 @@
 					<div class="tsd-signature tsd-kind-icon">level<span class="tsd-signature-symbol">:</span> <a href="../enums/loglevel.html" class="tsd-signature-type">LogLevel</a></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/aws/amazon-chime-sdk-js/blob/master/src/logger/MeetingSessionPOSTLogger.ts#L21">src/logger/MeetingSessionPOSTLogger.ts:21</a></li>
+							<li>Defined in <a href="https://github.com/aws/amazon-chime-sdk-js/blob/master/src/logger/MeetingSessionPOSTLogger.ts#L23">src/logger/MeetingSessionPOSTLogger.ts:23</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -217,7 +237,7 @@
 					<div class="tsd-signature tsd-kind-icon">lock<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol"> = false</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/aws/amazon-chime-sdk-js/blob/master/src/logger/MeetingSessionPOSTLogger.ts#L12">src/logger/MeetingSessionPOSTLogger.ts:12</a></li>
+							<li>Defined in <a href="https://github.com/aws/amazon-chime-sdk-js/blob/master/src/logger/MeetingSessionPOSTLogger.ts#L13">src/logger/MeetingSessionPOSTLogger.ts:13</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -227,7 +247,7 @@
 					<div class="tsd-signature tsd-kind-icon">log<wbr>Capture<span class="tsd-signature-symbol">:</span> <a href="log.html" class="tsd-signature-type">Log</a><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol"> = []</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/aws/amazon-chime-sdk-js/blob/master/src/logger/MeetingSessionPOSTLogger.ts#L10">src/logger/MeetingSessionPOSTLogger.ts:10</a></li>
+							<li>Defined in <a href="https://github.com/aws/amazon-chime-sdk-js/blob/master/src/logger/MeetingSessionPOSTLogger.ts#L11">src/logger/MeetingSessionPOSTLogger.ts:11</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -237,7 +257,7 @@
 					<div class="tsd-signature tsd-kind-icon">name<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/aws/amazon-chime-sdk-js/blob/master/src/logger/MeetingSessionPOSTLogger.ts#L16">src/logger/MeetingSessionPOSTLogger.ts:16</a></li>
+							<li>Defined in <a href="https://github.com/aws/amazon-chime-sdk-js/blob/master/src/logger/MeetingSessionPOSTLogger.ts#L18">src/logger/MeetingSessionPOSTLogger.ts:18</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -247,7 +267,7 @@
 					<div class="tsd-signature tsd-kind-icon">sequence<wbr>Number<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> = 0</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/aws/amazon-chime-sdk-js/blob/master/src/logger/MeetingSessionPOSTLogger.ts#L11">src/logger/MeetingSessionPOSTLogger.ts:11</a></li>
+							<li>Defined in <a href="https://github.com/aws/amazon-chime-sdk-js/blob/master/src/logger/MeetingSessionPOSTLogger.ts#L12">src/logger/MeetingSessionPOSTLogger.ts:12</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -257,13 +277,30 @@
 					<div class="tsd-signature tsd-kind-icon">url<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/aws/amazon-chime-sdk-js/blob/master/src/logger/MeetingSessionPOSTLogger.ts#L20">src/logger/MeetingSessionPOSTLogger.ts:20</a></li>
+							<li>Defined in <a href="https://github.com/aws/amazon-chime-sdk-js/blob/master/src/logger/MeetingSessionPOSTLogger.ts#L22">src/logger/MeetingSessionPOSTLogger.ts:22</a></li>
 						</ul>
 					</aside>
 				</section>
 			</section>
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Methods</h2>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="addeventlistener" class="tsd-anchor"></a>
+					<h3>add<wbr>Event<wbr>Listener</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">add<wbr>Event<wbr>Listener<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/aws/amazon-chime-sdk-js/blob/master/src/logger/MeetingSessionPOSTLogger.ts#L34">src/logger/MeetingSessionPOSTLogger.ts:34</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+						</li>
+					</ul>
+				</section>
 				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
 					<a name="debug" class="tsd-anchor"></a>
 					<h3>debug</h3>
@@ -274,7 +311,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/aws/amazon-chime-sdk-js/blob/master/src/logger/MeetingSessionPOSTLogger.ts#L33">src/logger/MeetingSessionPOSTLogger.ts:33</a></li>
+									<li>Defined in <a href="https://github.com/aws/amazon-chime-sdk-js/blob/master/src/logger/MeetingSessionPOSTLogger.ts#L49">src/logger/MeetingSessionPOSTLogger.ts:49</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -288,6 +325,30 @@
 					</ul>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="dispose" class="tsd-anchor"></a>
+					<h3>dispose</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">dispose<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<p>Implementation of <a href="../interfaces/disposable.html">Disposable</a>.<a href="../interfaces/disposable.html#dispose">dispose</a></p>
+								<ul>
+									<li>Defined in <a href="https://github.com/aws/amazon-chime-sdk-js/blob/master/src/logger/MeetingSessionPOSTLogger.ts#L128">src/logger/MeetingSessionPOSTLogger.ts:128</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Permanently clean up the logger. A new logger must be created to
+									resume logging.</p>
+								</div>
+							</div>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
 					<a name="error" class="tsd-anchor"></a>
 					<h3>error</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
@@ -297,7 +358,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/aws/amazon-chime-sdk-js/blob/master/src/logger/MeetingSessionPOSTLogger.ts#L55">src/logger/MeetingSessionPOSTLogger.ts:55</a></li>
+									<li>Defined in <a href="https://github.com/aws/amazon-chime-sdk-js/blob/master/src/logger/MeetingSessionPOSTLogger.ts#L71">src/logger/MeetingSessionPOSTLogger.ts:71</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -320,7 +381,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/aws/amazon-chime-sdk-js/blob/master/src/logger/MeetingSessionPOSTLogger.ts#L67">src/logger/MeetingSessionPOSTLogger.ts:67</a></li>
+									<li>Defined in <a href="https://github.com/aws/amazon-chime-sdk-js/blob/master/src/logger/MeetingSessionPOSTLogger.ts#L83">src/logger/MeetingSessionPOSTLogger.ts:83</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">number</span></h4>
@@ -337,7 +398,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/aws/amazon-chime-sdk-js/blob/master/src/logger/MeetingSessionPOSTLogger.ts#L63">src/logger/MeetingSessionPOSTLogger.ts:63</a></li>
+									<li>Defined in <a href="https://github.com/aws/amazon-chime-sdk-js/blob/master/src/logger/MeetingSessionPOSTLogger.ts#L79">src/logger/MeetingSessionPOSTLogger.ts:79</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-returns-title">Returns <a href="../enums/loglevel.html" class="tsd-signature-type">LogLevel</a></h4>
@@ -354,7 +415,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/aws/amazon-chime-sdk-js/blob/master/src/logger/MeetingSessionPOSTLogger.ts#L47">src/logger/MeetingSessionPOSTLogger.ts:47</a></li>
+									<li>Defined in <a href="https://github.com/aws/amazon-chime-sdk-js/blob/master/src/logger/MeetingSessionPOSTLogger.ts#L63">src/logger/MeetingSessionPOSTLogger.ts:63</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -377,7 +438,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/aws/amazon-chime-sdk-js/blob/master/src/logger/MeetingSessionPOSTLogger.ts#L110">src/logger/MeetingSessionPOSTLogger.ts:110</a></li>
+									<li>Defined in <a href="https://github.com/aws/amazon-chime-sdk-js/blob/master/src/logger/MeetingSessionPOSTLogger.ts#L145">src/logger/MeetingSessionPOSTLogger.ts:145</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -403,7 +464,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/aws/amazon-chime-sdk-js/blob/master/src/logger/MeetingSessionPOSTLogger.ts#L101">src/logger/MeetingSessionPOSTLogger.ts:101</a></li>
+									<li>Defined in <a href="https://github.com/aws/amazon-chime-sdk-js/blob/master/src/logger/MeetingSessionPOSTLogger.ts#L136">src/logger/MeetingSessionPOSTLogger.ts:136</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -417,6 +478,23 @@
 					</ul>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="removeeventlistener" class="tsd-anchor"></a>
+					<h3>remove<wbr>Event<wbr>Listener</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">remove<wbr>Event<wbr>Listener<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/aws/amazon-chime-sdk-js/blob/master/src/logger/MeetingSessionPOSTLogger.ts#L41">src/logger/MeetingSessionPOSTLogger.ts:41</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
 					<a name="setloglevel" class="tsd-anchor"></a>
 					<h3>set<wbr>Log<wbr>Level</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
@@ -426,7 +504,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/aws/amazon-chime-sdk-js/blob/master/src/logger/MeetingSessionPOSTLogger.ts#L59">src/logger/MeetingSessionPOSTLogger.ts:59</a></li>
+									<li>Defined in <a href="https://github.com/aws/amazon-chime-sdk-js/blob/master/src/logger/MeetingSessionPOSTLogger.ts#L75">src/logger/MeetingSessionPOSTLogger.ts:75</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -449,7 +527,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/aws/amazon-chime-sdk-js/blob/master/src/logger/MeetingSessionPOSTLogger.ts#L71">src/logger/MeetingSessionPOSTLogger.ts:71</a></li>
+									<li>Defined in <a href="https://github.com/aws/amazon-chime-sdk-js/blob/master/src/logger/MeetingSessionPOSTLogger.ts#L87">src/logger/MeetingSessionPOSTLogger.ts:87</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -472,7 +550,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/aws/amazon-chime-sdk-js/blob/master/src/logger/MeetingSessionPOSTLogger.ts#L95">src/logger/MeetingSessionPOSTLogger.ts:95</a></li>
+									<li>Defined in <a href="https://github.com/aws/amazon-chime-sdk-js/blob/master/src/logger/MeetingSessionPOSTLogger.ts#L114">src/logger/MeetingSessionPOSTLogger.ts:114</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
@@ -489,7 +567,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/aws/amazon-chime-sdk-js/blob/master/src/logger/MeetingSessionPOSTLogger.ts#L51">src/logger/MeetingSessionPOSTLogger.ts:51</a></li>
+									<li>Defined in <a href="https://github.com/aws/amazon-chime-sdk-js/blob/master/src/logger/MeetingSessionPOSTLogger.ts#L67">src/logger/MeetingSessionPOSTLogger.ts:67</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -529,6 +607,9 @@
 								<a href="meetingsessionpostlogger.html#configuration" class="tsd-kind-icon">configuration</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-private">
+								<a href="meetingsessionpostlogger.html#eventlistener" class="tsd-kind-icon">event<wbr>Listener</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-private">
 								<a href="meetingsessionpostlogger.html#intervalms" class="tsd-kind-icon">interval<wbr>Ms</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-private">
@@ -553,7 +634,13 @@
 								<a href="meetingsessionpostlogger.html#url" class="tsd-kind-icon">url</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="meetingsessionpostlogger.html#addeventlistener" class="tsd-kind-icon">add<wbr>Event<wbr>Listener</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
 								<a href="meetingsessionpostlogger.html#debug" class="tsd-kind-icon">debug</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="meetingsessionpostlogger.html#dispose" class="tsd-kind-icon">dispose</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
 								<a href="meetingsessionpostlogger.html#error" class="tsd-kind-icon">error</a>
@@ -572,6 +659,9 @@
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-private">
 								<a href="meetingsessionpostlogger.html#makerequestbody" class="tsd-kind-icon">make<wbr>Request<wbr>Body</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="meetingsessionpostlogger.html#removeeventlistener" class="tsd-kind-icon">remove<wbr>Event<wbr>Listener</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
 								<a href="meetingsessionpostlogger.html#setloglevel" class="tsd-kind-icon">set<wbr>Log<wbr>Level</a>
