@@ -11,6 +11,7 @@ import ContentShareController from '../contentsharecontroller/ContentShareContro
 import ContentShareMediaStreamBroker from '../contentsharecontroller/ContentShareMediaStreamBroker';
 import DefaultContentShareController from '../contentsharecontroller/DefaultContentShareController';
 import DeviceController from '../devicecontroller/DeviceController';
+import Disposable, { isDisposable } from '../disposable/Disposable';
 import Logger from '../logger/Logger';
 import DeviceControllerBasedMediaStreamBroker from '../mediastreambroker/DeviceControllerBasedMediaStreamBroker';
 import DefaultReconnectController from '../reconnectcontroller/DefaultReconnectController';
@@ -18,7 +19,7 @@ import DefaultWebSocketAdapter from '../websocketadapter/DefaultWebSocketAdapter
 import MeetingSession from './MeetingSession';
 import MeetingSessionConfiguration from './MeetingSessionConfiguration';
 
-export default class DefaultMeetingSession implements MeetingSession {
+export default class DefaultMeetingSession implements MeetingSession, Disposable {
   private _configuration: MeetingSessionConfiguration;
   private _logger: Logger;
   private audioVideoController: AudioVideoController;
@@ -106,6 +107,12 @@ export default class DefaultMeetingSession implements MeetingSession {
 
   get deviceController(): DeviceController {
     return this._deviceController;
+  }
+
+  async dispose(): Promise<void> {
+    if (isDisposable(this._deviceController)) {
+      await this._deviceController.dispose();
+    }
   }
 
   private checkBrowserSupportAndFeatureConfiguration(): void {

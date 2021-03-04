@@ -11,6 +11,7 @@ import AudioVideoObserver from '../audiovideoobserver/AudioVideoObserver';
 import DefaultBrowserBehavior from '../browserbehavior/DefaultBrowserBehavior';
 import ConnectionHealthData from '../connectionhealthpolicy/ConnectionHealthData';
 import SignalingAndMetricsConnectionMonitor from '../connectionmonitor/SignalingAndMetricsConnectionMonitor';
+import { isDisposable } from '../disposable/Disposable';
 import AudioVideoEventAttributes from '../eventcontroller/AudioVideoEventAttributes';
 import DefaultEventController from '../eventcontroller/DefaultEventController';
 import EventController from '../eventcontroller/EventController';
@@ -126,12 +127,6 @@ export default class DefaultAudioVideoController
       configuration.credentials.externalUserId
     );
 
-    this._activeSpeakerDetector = new DefaultActiveSpeakerDetector(
-      this._realtimeController,
-      configuration.credentials.attendeeId,
-      this.handleHasBandwidthPriority.bind(this)
-    );
-
     this._mediaStreamBroker = mediaStreamBroker;
     this._reconnectController = reconnectController;
     this._videoTileController = new DefaultVideoTileController(
@@ -153,6 +148,14 @@ export default class DefaultAudioVideoController
   }
 
   get activeSpeakerDetector(): ActiveSpeakerDetector {
+    // Lazy init.
+    if (!this._activeSpeakerDetector) {
+      this._activeSpeakerDetector = new DefaultActiveSpeakerDetector(
+        this._realtimeController,
+        this._configuration.credentials.attendeeId,
+        this.handleHasBandwidthPriority.bind(this)
+      );
+    }
     return this._activeSpeakerDetector;
   }
 
@@ -212,6 +215,7 @@ export default class DefaultAudioVideoController
   }
 
   start(): void {
+    this.activeSpeakerDetector;
     this.sessionStateController.perform(SessionStateControllerAction.Connect, () => {
       this.actionConnect(false);
     });
@@ -436,6 +440,14 @@ export default class DefaultAudioVideoController
       this._reconnectController.disableReconnect();
       this.logger.info('attendee left meeting, session will not be reconnected');
       this.actionDisconnect(new MeetingSessionStatus(MeetingSessionStatusCode.Left), false, null);
+
+      if (this._activeSpeakerDetector && isDisposable(this._activeSpeakerDetector)) {
+        this._activeSpeakerDetector.dispose().then(() => {
+          this.logger.debug('Disposed of active speaker detector.');
+        }).catch(e => {
+          this.logger.warn('Error disposing of active speaker detector:' + e);
+        });
+      }
     });
   }
 

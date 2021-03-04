@@ -103,6 +103,7 @@ import DevicePixelRatioObserver from './devicepixelratioobserver/DevicePixelRati
 import DevicePixelRatioSource from './devicepixelratiosource/DevicePixelRatioSource';
 import DevicePixelRatioWindowSource from './devicepixelratiosource/DevicePixelRatioWindowSource';
 import DeviceSelection from './devicecontroller/DeviceSelection';
+import Disposable from './disposable/Disposable';
 import EventAttributes from './eventcontroller/EventAttributes';
 import EventController from './eventcontroller/EventController';
 import EventName from './eventcontroller/EventName';
@@ -254,6 +255,7 @@ import WaitForAttendeePresenceTask from './task/WaitForAttendeePresenceTask';
 import WebSocketAdapter from './websocketadapter/WebSocketAdapter';
 import WebSocketReadyState from './websocketadapter/WebSocketReadyState';
 import { isAudioTransformDevice } from './devicecontroller/AudioTransformDevice';
+import { isDisposable } from './disposable/Disposable';
 import { isVideoTransformDevice } from './devicecontroller/VideoTransformDevice';
 
 export {
@@ -362,6 +364,7 @@ export {
   DevicePixelRatioSource,
   DevicePixelRatioWindowSource,
   DeviceSelection,
+  Disposable,
   EventAttributes,
   EventController,
   EventName,
@@ -513,5 +516,6 @@ export {
   WebSocketAdapter,
   WebSocketReadyState,
   isAudioTransformDevice,
+  isDisposable,
   isVideoTransformDevice,
 }
