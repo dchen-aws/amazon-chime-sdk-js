@@ -48,6 +48,7 @@ import {
   VoiceFocusPaths,
   VoiceFocusTransformDevice,
   isAudioTransformDevice,
+  isDisposable,
 } from 'amazon-chime-sdk-js';
 
 import CircularCut from './videofilter/CircularCut';
@@ -221,6 +222,7 @@ export class DemoMeetingApp
   static readonly DATA_MESSAGE_TOPIC: string = 'chat';
   static readonly DATA_MESSAGE_LIFETIME_MS: number = 300000;
 
+  activeSpeakerHandler: (undefined | ((attendeeIds: string[]) => void)) = undefined;
   showActiveSpeakerScores = false;
   activeSpeakerLayout = true;
   meeting: string | null = null;
@@ -268,6 +270,7 @@ export class DemoMeetingApp
   markdown = require('markdown-it')({ linkify: true });
   lastMessageSender: string | null = null;
   lastReceivedMessageTimestamp = 0;
+  meetingSessionPOSTLogger: MeetingSessionPOSTLogger;
   meetingEventPOSTLogger: MeetingSessionPOSTLogger;
 
   hasChromiumWebRTC: boolean = this.defaultBrowserBehaviour.hasChromiumWebRTC();
@@ -1120,16 +1123,17 @@ export class DemoMeetingApp
         this.createLogStream(configuration, 'create_browser_event_log_stream'),
       ]);
 
+      this.meetingSessionPOSTLogger = new MeetingSessionPOSTLogger(
+        'SDK',
+        configuration,
+        DemoMeetingApp.LOGGER_BATCH_SIZE,
+        DemoMeetingApp.LOGGER_INTERVAL_MS,
+        `${DemoMeetingApp.BASE_URL}logs`,
+        logLevel
+      );
       this.meetingLogger = new MultiLogger(
+        this.meetingEventPOSTLogger,
         consoleLogger,
-        new MeetingSessionPOSTLogger(
-          'SDK',
-          configuration,
-          DemoMeetingApp.LOGGER_BATCH_SIZE,
-          DemoMeetingApp.LOGGER_INTERVAL_MS,
-          `${DemoMeetingApp.BASE_URL}logs`,
-          logLevel
-        )
       );
       this.meetingEventPOSTLogger = new MeetingSessionPOSTLogger(
         'SDKEvent',
@@ -1321,7 +1325,7 @@ export class DemoMeetingApp
       );
     };
     this.audioVideo.realtimeSubscribeToAttendeeIdPresence(handler);
-    const activeSpeakerHandler = (attendeeIds: string[]): void => {
+    this.activeSpeakerHandler = (attendeeIds: string[]): void => {
       for (const attendeeId in this.roster) {
         this.roster[attendeeId].active = false;
       }
@@ -1335,7 +1339,7 @@ export class DemoMeetingApp
     };
     this.audioVideo.subscribeToActiveSpeakerDetector(
       new DefaultActiveSpeakerPolicy(),
-      activeSpeakerHandler,
+      this.activeSpeakerHandler,
       (scores: { [attendeeId: string]: number }) => {
         for (const attendeeId in scores) {
           if (this.roster[attendeeId]) {
@@ -2234,15 +2238,49 @@ export class DemoMeetingApp
     this.log(`session stopped from ${JSON.stringify(sessionStatus)}`);
     this.log(`resetting stats in WebRTCStatsCollector`);
     this.statsCollector.resetStats();
+
+    const returnToStart = () => {
+      // If you want to make this a repeatable SPA, change this function to
+      // ```
+      this.switchToFlow('flow-authenticate');
+      // ```
+      // and fix some state (e.g., video buttons).
+      //
+      // For simplicity, let's just reload the page.
+      //window.location.href = window.location.pathname;
+    };
+
+    const onLeftMeeting = () => {
+      // Clean up the timers for this.
+      this.audioVideo.unsubscribeFromActiveSpeakerDetector(this.activeSpeakerHandler);
+
+      // Clean up the loggers so they don't keep their `onload` listeners around.
+      setTimeout(async () => {
+        await this.meetingEventPOSTLogger?.dispose();
+        await this.meetingSessionPOSTLogger?.dispose();
+      }, 500);
+
+      if (this.meetingSession && isDisposable(this.meetingSession)) {
+        this.meetingSession.dispose();
+      }
+      this.audioVideo = undefined;
+      this.voiceFocusDevice = undefined;
+      this.meetingSession = undefined;
+      this.activeSpeakerHandler = undefined;
+
+      returnToStart();
+    };
+
     if (sessionStatus.statusCode() === MeetingSessionStatusCode.AudioCallEnded) {
       this.log(`meeting ended`);
-      // @ts-ignore
-      window.location = window.location.pathname;
-    } else if (sessionStatus.statusCode() === MeetingSessionStatusCode.Left) {
-      this.log('left meeting');
+      onLeftMeeting();
+      return;
+    }
 
-      // @ts-ignore
-      window.location = window.location.pathname;
+    if (sessionStatus.statusCode() === MeetingSessionStatusCode.Left) {
+      this.log('left meeting');
+      onLeftMeeting();
+      return;
     }
   }
 
