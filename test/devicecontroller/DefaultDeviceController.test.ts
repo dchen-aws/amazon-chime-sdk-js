@@ -394,7 +394,7 @@ describe('DefaultDeviceController', () => {
       DefaultDeviceController.audioContext = offline;
 
       const choose = deviceController.chooseAudioInputDevice(device);
-      expect(choose).to.eventually.be.rejectedWith('INVALID_STATE_ERR');
+      expect(choose).to.eventually.be.rejectedWith('Error fetching device');
     });
   });
 
